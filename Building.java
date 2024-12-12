@@ -39,6 +39,11 @@ public class Building {
     public int getFloors() {
         return this.nFloors;
     }
+
+    /**
+     * toString method to print information about the building
+     * @return the building's name, floors number and its address
+     */
     public String toString() {
         return this.name + " is a " + this.nFloors + "-story building located at " + this.address;
     }
@@ -47,4 +52,3 @@ public class Building {
         System.out.println(fordHall);
     }
 }
-
