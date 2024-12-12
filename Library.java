@@ -34,9 +34,11 @@ public class Library extends Building {
     public String removeTitle(String title){
         if(collection.containsKey(title)){
             collection.remove(title);
-        return title + " has been removed";
+        System.out.println( title + " removed");
+        return title;
         } else{
-            return title+ " has not been found in the library";
+            System.out.println( title + " not found in library");
+            return null;
         }
     }
 
@@ -92,7 +94,7 @@ public class Library extends Building {
                 System.out.println(title + " is available");
                 return true;
             } else{
-                System.out.println(title + " is not available");
+                System.out.println(title + " is not currently available");
                 return false;
             }
         } else{
@@ -100,10 +102,20 @@ public class Library extends Building {
             return false;
         }
     }
-    //method to print the books in the library with their availability status
+
+    /**
+     * Method to print the books in the collection with their availability status
+     */
     public void printCollection(){
+        System.out.println("");
+        System.out.println("The list of books in the library are: ");
         System.out.println(collection);
     }
+
+    /**
+     * toString method to print the size of the library collection
+     * @return the size of the library books
+     */
     public String toString(){
         return super.toString()+" with "+collection.size()+" books";
     }
@@ -114,7 +126,9 @@ public class Library extends Building {
         library.addTitle("Insurgent by Veronica Ruth");
         library.checkOut("Allegiance by Veronica Ruth");
         library.checkOut("Divergent by Veronica Ruth");
-        library.printCollection();
         library.isAvailable("Allegiance by Veronica Ruth");
+        library.isAvailable("Carve the Mark by Veronica Ruth");
+        library.isAvailable("Divergent by Veronica Ruth");
+        library.printCollection();
     }
 }
