@@ -65,9 +65,9 @@ public class Cafe extends Building {
         this.nCups += nCups;
     }
     public static void main(String[]args){
-        Cafe CC_Cafe=new Cafe("Campus Center Cafe", " 1 Chapin Way",3,50, 120,150,100);
-        System.out.println(CC_Cafe);
-        CC_Cafe.sellCoffee(2, 10, 20);
-        CC_Cafe.sellCoffee(2, 1700, 20);
+        Cafe ccCafe=new Cafe("Campus Center Cafe", " 1 Chapin Way",3,50, 120,150,100);
+        System.out.println(ccCafe);
+        ccCafe.sellCoffee(2, 10, 20);
+        ccCafe.sellCoffee(2, 1700, 20);
     }
 }
