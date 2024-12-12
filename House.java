@@ -7,18 +7,21 @@ public class House extends Building {
      */
     private ArrayList<String> residents;
     private final boolean hasDiningRoom;
-    private final int maxcapacity;
+    private int maxcapacity, initialCapacity;
+
     /**
-     * Constructor for the House subclass
+     *  Constructor for the House subclass
      * @param name takes in the name of the house
-     * @param address takes in the location adress of the house
-     * @param nFloors takes in the number of the house floors
+     * @param address takes in the adress of the house
+     * @param nFloors takes in the number of floors in the house
+     * @param hasDiningRoom checking whether it has a dining hall or not with boolean
+     * @param initialCapacity  takes in the initial capacity of the house
      */
-    public House(String name, String address, int nFloors, boolean hasDiningRoom, int maxcapacity) {
+    public House(String name, String address, int nFloors, boolean hasDiningRoom, int initialCapacity) {
         super(name, address, nFloors);
         this.hasDiningRoom = hasDiningRoom;
-        this.maxcapacity = maxcapacity;
-        residents = new ArrayList<>(maxcapacity);
+        this.initialCapacity = initialCapacity;
+        residents = new ArrayList<>(initialCapacity);
         System.out.println("You have built a house: 🏠 called " + this.getName());
     }
 
@@ -74,12 +77,11 @@ public class House extends Building {
      */
     public String moveOut(String name){
         if(!residents.contains(name)){
-            System.out.println("Resident "+name+" does not live in this house.");
-            return name;
-        }
-        else{
+            throw new RuntimeException("Resident "+name+" does not live in this house.");
+        } else{
             residents.remove(name);
-        return name+" has been removed from the house.";
+            System.out.println(name+" has been removed from the house.");
+            return name;
         }
     }
 
@@ -99,22 +101,22 @@ public class House extends Building {
         return super.toString() + " which can house "+maxcapacity+" students and it's " + hasDiningRoom + " that it has a dining room";
     }
     public static void main(String[] args) {
-        House Tyler=new House("Tyler house", "4 Green St", 2, true, 60);
-        House Washburn= new House("Washburn House", "2 Seelye Drive",4,false, 45);
-        System.out.println(Tyler);
-        System.out.println(Washburn);
-        String Resident1="Keza";
-        String Resident2="Amy";
-        String Resident3="Bob";
-        String Resident4="Boba";
-        String Resident5="Lyse";
-        Washburn.moveIn(Resident1);
-        Washburn.moveIn(Resident2);
-        Tyler.residents.add(Resident4);
-        Tyler.residents.add(Resident5);
-        Tyler.moveOut(Resident1);
-        Washburn.nResidents();
-        Washburn.hasDiningRoom();
+        House tyler=new House("Tyler house", "4 Green St", 2, true, 60);
+        House washburn= new House("Washburn House", "2 Seelye Drive",4,false, 45);
+        System.out.println(tyler);
+        System.out.println(washburn);
+        String resident1="Keza";
+        String resident2="Amy";
+        String resident3="Bob";
+        String resident4="Boba";
+        String resident5="Lyse";
+        washburn.moveIn(resident1);
+        washburn.moveIn(resident2);
+        tyler.residents.add(resident4);
+        tyler.residents.add(resident5);
+        tyler.moveOut(resident1);
+        washburn.nResidents();
+        washburn.hasDiningRoom();
 
     }
 }
